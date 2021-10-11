@@ -1,0 +1,293 @@
+\documentclass[journal,12pt,twocolumn]{IEEEtran}
+
+\usepackage{setspace}
+\usepackage{gensymb}
+\singlespacing
+\usepackage[cmex10]{amsmath}
+
+\usepackage{amsthm}
+
+\usepackage{mathrsfs}
+\usepackage{txfonts}
+\usepackage{stfloats}
+\usepackage{bm}
+\usepackage{cite}
+\usepackage{cases}
+\usepackage{subfig}
+
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{adjustbox}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{steinmetz}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{verbatim}
+\usepackage{tfrupee}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{graphicx}
+\usepackage{tkz-euclide}
+\usepackage{tikz}
+\usetikzlibrary{shapes.multipart}
+
+\usetikzlibrary{calc,math}
+\usepackage{listings}
+    \usepackage{color}                                            %%
+    \usepackage{array}                                            %%
+    \usepackage{longtable}                                        %%
+    \usepackage{calc}                                             %%
+    \usepackage{multirow}                                         %%
+    \usepackage{hhline}                                           %%
+    \usepackage{ifthen}                                           %%
+    \usepackage{lscape}     
+\usepackage{multicol}
+\usepackage{chngcntr}
+
+\DeclareMathOperator*{\Res}{Res}
+
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+\renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
+% \renewcommand{\thefigure}{\theenumi}
+\renewcommand\thesectiondis{\arabic{section}}
+\renewcommand\thesubsectiondis{\thesectiondis.\arabic{subsection}}
+\renewcommand\thesubsubsectiondis{\thesubsectiondis.\arabic{subsubsection}}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+\def\inputGnumericTable{}                                 %%
+
+\lstset{
+%language=C,
+frame=single, 
+breaklines=true,
+columns=fullflexible
+}
+\begin{document}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{problem}{Problem}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}{Example}[section]
+\newtheorem{definition}[problem]{Definition}
+
+\newcommand{\BEQA}{\begin{eqnarray}}
+\newcommand{\EEQA}{\end{eqnarray}}
+\newcommand{\define}{\stackrel{\triangle}{=}}
+\bibliographystyle{IEEEtran}
+\raggedbottom
+\setlength{\parindent}{0pt}
+\providecommand{\mbf}{\mathbf}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\qfunc}[1]{\ensuremath{Q\left(#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+\providecommand{\lsbrak}[1]{\ensuremath{{}\left[#1\right.}}
+\providecommand{\rsbrak}[1]{\ensuremath{{}\left.#1\right]}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\lbrak}[1]{\ensuremath{\left(#1\right.}}
+\providecommand{\rbrak}[1]{\ensuremath{\left.#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\providecommand{\lcbrak}[1]{\ensuremath{\left\{#1\right.}}
+\providecommand{\rcbrak}[1]{\ensuremath{\left.#1\right\}}}
+\theoremstyle{remark}
+\newtheorem{rem}{Remark}
+\newcommand{\sgn}{\mathop{\mathrm{sgn}}}
+% \providecommand{\abs}[1]{\left\vert#1\right\vert}
+% \providecommand{\res}[1]{\Res\displaylimits_{#1}} 
+% \providecommand{\norm}[1]{\left\lVert#1\right\rVert}
+% %\providecommand{\norm}[1]{\lVert#1\rVert}
+% \providecommand{\mtx}[1]{\mathbf{#1}}
+% \providecommand{\mean}[1]{E\left[ #1 \right]}
+\providecommand{\fourier}{\overset{\mathcal{F}}{ \rightleftharpoons}}
+%\providecommand{\hilbert}{\overset{\mathcal{H}}{ \rightleftharpoons}}
+\providecommand{\system}{\overset{\mathcal{H}}{ \longleftrightarrow}}
+	%\newcommand{\solution}[2]{\textbf{Solution:}{#1}}
+\newcommand{\solution}{\noindent \textbf{Solution: }}
+\newcommand{\cosec}{\,\text{cosec}\,}
+\providecommand{\dec}[2]{\ensuremath{\overset{#1}{\underset{#2}{\gtrless}}}}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\numberwithin{equation}{subsection}
+\makeatletter
+\@addtoreset{figure}{problem}
+\makeatother
+\let\StandardTheFigure\thefigure
+\let\vec\mathbf
+\renewcommand{\thefigure}{\theproblem}
+\def\putbox#1#2#3{\makebox[0in][l]{\makebox[#1][l]{}\raisebox{\baselineskip}[0in][0in]{\raisebox{#2}[0in][0in]{#3}}}}
+     \def\rightbox#1{\makebox[0in][r]{#1}}
+     \def\centbox#1{\makebox[0in]{#1}}
+     \def\topbox#1{\raisebox{-\baselineskip}[0in][0in]{#1}}
+     \def\midbox#1{\raisebox{-0.5\baselineskip}[0in][0in]{#1}}
+\vspace{3cm}
+\title{Assignment 1}
+\author{Vedala Sai Ashok - EE18BTECH11044}
+\maketitle
+\newpage
+\bigskip
+\renewcommand{\thefigure}{\theenumi}
+\renewcommand{\thetable}{\theenumi}
+Download all latex-tikz codes from 
+%
+\begin{lstlisting}
+https://github.com/hellblazer1/EE4013_A1/tree/main/codes
+\end{lstlisting}
+\setcounter{figure}{0}
+\section{Problem}
+Consider the C functions foo and bar given below
+\begin{lstlisting}
+int foo(int val){
+    int x = 0;
+    while(val > 0){
+        x = x + foo(val--);
+    }
+    return val;
+}
+
+int bar(int val){
+    int x = 0;
+    while(val > 0){
+        x = x + bar(val-1);
+    }
+    return val;
+}
+\end{lstlisting}
+\setcounter{figure}{0}
+Invocations of foo(3) and bar(3) will result in:
+\begin{enumerate}
+    \item Return of 6 and 6 respectively.
+    \item Infinite loop and abnormal termination respectively.
+    \item Abnormal termination and infinite loop respectively.
+    \item Both terminating abnormally.
+\end{enumerate}
+\section{Solution}
+Answer : 3) Abnormal termination and infinite loop respectively.
+
+\section{function foo}
+
+\subsection{Implementation}
+Below is the C implementation of the algorithm.
+\begin{lstlisting}
+https://github.com/hellblazer1/EE4013_A1/tree/main/codes/foo_func.c
+\end{lstlisting}
+
+\subsection{Explanation}
+In the function foo, in each of its recursive calls inside the while the same functions is being called with the value 3, because val is passed with post decrement operator so the value 3 is passed and val is decremented after the recursive call finishes execution. Every time the function is called a new local variable, with scope limited to the function being called, with name val is being assigned the value 3. So the program will be terminated abruptly with segmentation fault as the stack is overflowed.
+
+
+\subsection{Logic Flow}
+\tikzstyle{decision} = [diamond, draw, fill=white!20, 
+    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=white!20, 
+    text width=7em, text centered, rounded corners, minimum height=1em]
+\tikzstyle{properblock} = [rectangle, draw, fill=white!20, 
+    text width=2em, text centered, rounded corners, minimum height=1em,node distance = 3cm]
+
+
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{arrow} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=2.7cm,
+    minimum height=2em]
+\tikzstyle{sblock} = [rectangle, draw, fill=white!20, 
+    text width=10em, text badly centered, rounded corners, minimum height=1em]
+
+\begin{figure}[!h]
+\centering
+\begin{tikzpicture}[node distance = 2cm, auto]
+    % Place nodes
+    \node [cloud] (first) {foo(3)};
+    \node [cloud, below of=first] (second) {foo(3)};
+    \node [cloud, below of=second] (third) {foo(3)};
+    \node [cloud, below of=third] (fourth) {foo(3)};
+    \node [block, below of = fourth] (fifth) {Stack Overflows};
+    
+    % Draw edges
+    \draw [arrow] (first) -- (second);
+    \draw [arrow] (second) -- (third);
+    \draw [arrow] (third) -- (fourth);
+    \draw [arrow,dashed] (fourth) -- (fifth);
+\end{tikzpicture}
+
+\end{figure}
+
+
+
+
+\section{function bar}
+
+\subsection{Implementation}
+Below is the C implementation of the algorithm.
+\begin{lstlisting}
+https://github.com/hellblazer1/EE4013_A1/tree/main/codes/bar_func.c
+\end{lstlisting}
+
+\subsection{Explanation}
+In the function bar, the program will be stuck in an infinite while loop after the third recursive call to the function bar (val = 1 in this recursive call). The fourth recursive call made to the function bar with val = 0 will always return 0 and as the val is not getting updated in the third recursive call (val is always 1 in third recursive call),the while loop will run until the program is terminated. Here stack is not getting overflowed with recursive call as at any instant in time there are a maximum of four recursive calls to the function bar in the stack. 
+
+
+\subsection{Logic Flow}
+
+\begin{figure}[!h]
+\centering
+\begin{tikzpicture}[node distance = 2cm, auto]
+    % Place nodes
+    \node [cloud] (second) {boo(3)};
+    \node [cloud, below of=second] (third) {boo(2)};
+    \node [cloud, below of=third] (fourth) {boo(1)};
+    \node [cloud, below of=fourth] (fifth) {boo(0)};
+    
+    % Draw edges
+    \path [line] (second) -- (third);
+    \path [line] (third) -- (fourth);
+    \path [line] (fourth) -- (fifth);
+    \path [line] (fifth)  -- ++(3,0) |- node[xshift=1.5cm,yshift = -0.7cm, text width=2.5cm]{infinte loop (returns 0 everytime)} (fourth);
+\end{tikzpicture}
+\end{figure}
+
+
+\section{function for proper output}
+
+\subsection{Implementation}
+Below is the C implementation of the algorithm.
+\begin{lstlisting}
+https://github.com/hellblazer1/EE4013_A1/tree/main/codes/proper_func.c
+\end{lstlisting}
+
+\subsection{Explanation}
+In the function proper, the program will output the sum of first n natural numbers by making n recursive calls and accumulating the value in local variable x after and returning it after each recursive call execution.
+
+
+\subsection{Logic Flow}
+\begin{figure}[!h]
+\centering
+\begin{tikzpicture}[node distance = 2cm, auto]
+    % Place nodes
+    \node [cloud] (second) {proper(3)};
+    \node [properblock, left of=second] (output) {6};
+    \node [cloud, below of=second] (third) {proper(2)};
+    \node [cloud, below of=third] (fourth) {proper(1)};
+    \node [cloud, below of=fourth] (fifth) {proper(0)};
+    
+    % Draw edges
+    \path [line] (second) -- (third);
+    \path [line] (second.west) -- node[xshift=0]{stdout} ++(-1,0);
+    \path [line] (third) -- (fourth);
+    \path [line] (fourth) -- (fifth);
+    \path [line] (fifth)  -- ++(3,0) |- node[xshift=1.5cm,yshift = -0.7cm, text width=2.5cm]{returns 0 } (fourth);
+    \path [line] (fourth)  -- ++(-3,0) |- node[xshift=-0.4cm,yshift = -1cm, text width=2.5cm]{returns 1} (third);
+    \path [line] (third)  -- ++(3,0) |- node[xshift=1.5cm,yshift = -0.7cm, text width=2.5cm]{returns 3} (second);
+    
+    
+\end{tikzpicture}
+
+
+
+
+\end{figure}
+
+\end{document}

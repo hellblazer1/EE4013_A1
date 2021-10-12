@@ -250,7 +250,7 @@ In the function bar, the program will be stuck in an infinite while loop after t
 \end{figure}
 
 
-\section{function for proper output}
+\section{function for sum till n natural numbers}
 
 \subsection{Implementation}
 Below is the C implementation of the algorithm.
@@ -259,8 +259,11 @@ https://github.com/hellblazer1/EE4013_A1/tree/main/codes/proper_func.c
 \end{lstlisting}
 
 \subsection{Explanation}
-In the function proper, the program will output the sum of first n natural numbers by making n recursive calls and accumulating the value in local variable x after and returning it after each recursive call execution.
+\begin{itemize}
+    \item Both the functions foo and bar have attempted to make recursive calls after decrementing the value of variable val by 1. The output of these recursive calls and value of variable val is getting accumulated in local variable x after the execution of each recursive call.So It would be a fair assumption to make that both these functions attempt to calculate the sum of first n natural numbers (3 in this case).
 
+    \item In the function proper, the program will output the sum of first n natural numbers by making n recursive calls and accumulating the value in local variable x after and returning it after each recursive call execution.
+\end{itemize}
 
 \subsection{Logic Flow}
 \begin{figure}[!h]

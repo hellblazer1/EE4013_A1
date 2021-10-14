@@ -166,7 +166,12 @@ Invocations of foo(3) and bar(3) will result in:
     \item Both terminating abnormally.
 \end{enumerate}
 \section{Solution}
-Answer : 3) Abnormal termination and infinite loop respectively.
+
+\begin{itemize}
+    \item Answer : 3) Abnormal termination and infinite loop respectively.
+    \\
+    \item Both the functions foo and bar have attempted to make recursive calls after decrementing the value of variable val by 1. The output of these recursive calls and value of variable val is getting accumulated in local variable x after the execution of each recursive call.So It would be a fair assumption to make that both these functions attempt to calculate the sum of first n natural numbers.
+\end{itemize}
 
 \section{function foo}
 
@@ -176,10 +181,6 @@ Below is the C implementation of the algorithm.
 https://github.com/hellblazer1/EE4013_A1/tree/main/codes/foo_func.c
 \end{lstlisting}
 
-\subsection{Explanation}
-In the function foo, in each of its recursive calls inside the while the same functions is being called with the value 3, because val is passed with post decrement operator so the value 3 is passed and val is decremented after the recursive call finishes execution. Every time the function is called a new local variable, with scope limited to the function being called, with name val is being assigned the value 3. So the program will be terminated abruptly with segmentation fault as the stack is overflowed.
-
-
 \subsection{Logic Flow}
 \tikzstyle{decision} = [diamond, draw, fill=white!20, 
     text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
@@ -187,6 +188,8 @@ In the function foo, in each of its recursive calls inside the while the same fu
     text width=7em, text centered, rounded corners, minimum height=1em]
 \tikzstyle{properblock} = [rectangle, draw, fill=white!20, 
     text width=2em, text centered, rounded corners, minimum height=1em,node distance = 3cm]
+    
+
 
 
 \tikzstyle{line} = [draw, -latex']
@@ -214,6 +217,9 @@ In the function foo, in each of its recursive calls inside the while the same fu
 \end{tikzpicture}
 
 \end{figure}
+    
+\subsection{Explanation}
+In the function foo, in each of its recursive calls inside the while the same functions is being called with the value 3, because val is passed with post decrement operator so the value 3 is passed and val is decremented after the recursive call finishes execution. Every time the function is called a new local variable, with scope limited to the function being called, with name val is being assigned the value 3. So the program will be terminated abruptly with segmentation fault as the stack is overflowed.
 
 
 
@@ -225,9 +231,6 @@ Below is the C implementation of the algorithm.
 \begin{lstlisting}
 https://github.com/hellblazer1/EE4013_A1/tree/main/codes/bar_func.c
 \end{lstlisting}
-
-\subsection{Explanation}
-In the function bar, the program will be stuck in an infinite while loop after the third recursive call to the function bar (val = 1 in this recursive call). The fourth recursive call made to the function bar with val = 0 will always return 0 and as the val is not getting updated in the third recursive call (val is always 1 in third recursive call),the while loop will run until the program is terminated. Here stack is not getting overflowed with recursive call as at any instant in time there are a maximum of four recursive calls to the function bar in the stack. 
 
 
 \subsection{Logic Flow}
@@ -249,6 +252,12 @@ In the function bar, the program will be stuck in an infinite while loop after t
 \end{tikzpicture}
 \end{figure}
 
+\subsection{Explanation}
+In the function bar, the program will be stuck in an infinite while loop after the third recursive call to the function bar (val = 1 in this recursive call). The fourth recursive call made to the function bar with val = 0 will always return 0 and as the val is not getting updated in the third recursive call (val is always 1 in third recursive call),the while loop will run until the program is terminated. Here stack is not getting overflowed with recursive call as at any instant in time there are a maximum of four recursive calls to the function bar in the stack. 
+
+
+
+
 
 \section{function for sum till n natural numbers}
 
@@ -257,13 +266,6 @@ Below is the C implementation of the algorithm.
 \begin{lstlisting}
 https://github.com/hellblazer1/EE4013_A1/tree/main/codes/proper_func.c
 \end{lstlisting}
-
-\subsection{Explanation}
-\begin{itemize}
-    \item Both the functions foo and bar have attempted to make recursive calls after decrementing the value of variable val by 1. The output of these recursive calls and value of variable val is getting accumulated in local variable x after the execution of each recursive call.So It would be a fair assumption to make that both these functions attempt to calculate the sum of first n natural numbers (3 in this case).
-
-    \item In the function proper, the program will output the sum of first n natural numbers by making n recursive calls and accumulating the value in local variable x after and returning it after each recursive call execution.
-\end{itemize}
 
 \subsection{Logic Flow}
 \begin{figure}[!h]
@@ -284,13 +286,13 @@ https://github.com/hellblazer1/EE4013_A1/tree/main/codes/proper_func.c
     \path [line] (fifth)  -- ++(3,0) |- node[xshift=1.5cm,yshift = -0.7cm, text width=2.5cm]{returns 0 } (fourth);
     \path [line] (fourth)  -- ++(-3,0) |- node[xshift=-0.4cm,yshift = -1cm, text width=2.5cm]{returns 1} (third);
     \path [line] (third)  -- ++(3,0) |- node[xshift=1.5cm,yshift = -0.7cm, text width=2.5cm]{returns 3} (second);
-    
-    
 \end{tikzpicture}
-
-
-
-
 \end{figure}
+
+\subsection{Explanation}
+    
+In the function proper, the program will output the sum of first n natural numbers by making n recursive calls and accumulating the value in local variable x after and returning it after each recursive call execution.
+
+
 
 \end{document}
